@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div></div>
+    <script>
+        // 操作样式之 css 方法
+        $(function(){
+            $('div').css('width');//返回大小 带px
+            console.log($('div').css('width'));
+            // 修改样式
+            $('div').css('width','200px');
+            // 如果是数值 可以不用加引号和px如下:
+            // $('div').css('width',300);
+            //以对象的形式更改
+            $('div').css({
+                width : 400,//注意是逗号 不是分号
+                height: 400,
+                backgroundColor : 'red'
+                // 符合属性要使用驼峰命名法
+            })
+        })
+    </script>
+</body>
+
+</html>

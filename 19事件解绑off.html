@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        .son{
+            height: 280px;
+            width: 40px;
+            background-color: blue;
+            position: absolute;
+            left: 10px;
+            top: 15px;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <ul><li></li></ul>
+    <p>点击只触发一次</p>
+    <script>
+        $('.father').on({
+            mouseenter :function(){
+                $(this).css('background','orange');
+            },
+            click:function(){
+                $(this).css('background','purple');
+            }
+        })
+        //1.事件解除绑定 off
+        $('.father').off()//解除所有事件
+        $('.father').off('click')//解绑 点击 事件
+        $('ul').off('click','li');//解除事件委托
+
+        //2one 事件 如果事件只触发一次,可以用 one
+        $('p').one('click',function(){
+            alert('已经触发一次了');
+            $(this).text("已经触发一次了");
+        })
+        
+    </script>
+</body>
+</html>

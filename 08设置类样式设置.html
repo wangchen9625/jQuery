@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: pink;
+            transition: all 0.5s;
+        }
+        .current{
+            background-color: orange;
+            
+        }
+        .current-red{
+            background-color: red;
+            transform: rotate(360deg);
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        $(function(){
+            //1.添加类 addClass(); 注意添加一个类,而不是覆盖原来的类 
+            // $('div').click(function(){
+            //     $(this).addClass('current');
+            // })
+            // 2.删除类 removeClass('classname');
+            // $(this).removeClass('current');
+            // 3 切换类 toggleClass('classname'),//如果没有添加类,如果有移除该类
+                $('div').click(function(){
+                    $(this).toggleClass('current-red');
+                })
+        })
+    </script>
+</body>
+</html>

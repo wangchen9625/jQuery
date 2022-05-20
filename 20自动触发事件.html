@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .test {
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test">自动触发事件1</div>
+    <p>自动触发事件2</p>
+    <h5>自动触发事件3</h5>
+    <input type="text" name="" id="">
+    <script>
+        $(function(){
+            $('.test').on('click',function(){
+                alert(11);
+            })
+            $('p').on('click',function(){
+                alert(22);
+            })
+            $('h5').on('click',function(){
+                alert(33);
+            })
+            $('input').on("focus",function(){
+                $(this).val("hello");
+            })
+            //自动触发事件
+            //1.元素.事件()
+            $('div').click();
+            //2.元素.trigger("事件")
+            $('p').trigger('click');
+            //3.元素.triggerHandler("事件") 不会触发元素的默认行为
+            $('h5').triggerHandler("click");
+
+            $('input').triggerHandler('focus');//编辑框默认会有蓝色边框,但是这里不会触发
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>我是原来的li</li>
+    </ul> 
+    <div class="test">我是原先的div</div>
+    <script>
+        $(function(){
+            //1创建元素
+            let li = $('<li>我是后来创建的li</li>');
+            //2添加元素 
+            //2.1内部添加 生成的是父子关系
+            //element.append("内容")//类似原生的appendChild
+            $('ul').append(li);//放后面
+            li = $('<li>我是后来创建的li,放到前面</li>');
+            $('ul').prepend(li);//放前面
+            //2.2 外部添加 生成的是兄弟关系
+            let div = $('<div>我是后妈生的</div>');
+            $('.test').after(div);
+            div = $('<div>我是前妈生的</div>');
+            $('.test').before(div);
+            //3删除元素 remove
+            // $('ul').remove();//删除的
+            //empty() 删除匹配元素里面的子节点
+            // $('ul').empty();//ul 还在 ,只不过li全没了
+            // 还可以这么写
+            $('ul').html("");
+        })
+    </script>
+</body>
+</html>

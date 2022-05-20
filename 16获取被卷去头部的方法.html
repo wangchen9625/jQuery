@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            height: 3300px;
+            width: 250px;
+            background-color: orange;
+            margin-top: 200px;
+            position: relative;
+        }
+        .back{
+            background-color: pink;
+            position:fixed;
+            right: 30px;
+            top: 50px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+    </div>
+    <div class="back">返回顶部</div>
+    <script>
+        // 被卷去的头部 scrollTop() 被卷去的左边 scrollLeft()
+        $(window).scroll(function(){
+            console.log($(document).scrollTop());
+            if($(document).scrollTop() >= 200){
+                $('.back').slideDown(300);
+            }else{
+                $('.back').slideUp(300);
+            }
+        })
+        $('.back').click(function(){
+            $("body, html").stop().animate({
+                scrollTop:0
+            });
+        })
+        
+    </script>
+</body>
+</html>

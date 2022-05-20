@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.min.js"></script>
+</head>
+<body>
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>  
+    <script>
+        //对伪数组中的元素做不同的操作,用each更加方便 
+        $('div').each(function(i,domele){
+            //注意这里是domele 如果想要使用jq需要$(domele)
+            if(i == 0){
+                $(domele).css("color","blue");
+            }else if(i == 1){
+                domele.style.color = "red";
+            }else if(i == 2){
+                $(domele).html(4);
+            }
+        })
+        //也可以这么写,
+        let sum = 0;
+        $.each($('div'),function(i,domele){
+            sum += parseInt($('div').text());
+        });
+        console.log(sum);
+        //使用each 遍历可迭代对象,如数组, 对象
+        $.each(['a','h','c'],function(i,ele){
+            console.log(i);
+            console.log(ele);
+        });
+        $.each({
+            "name":"andy",
+            "age" : 1
+        },function(i,ele){
+            console.log(i);//打印key
+            console.log(ele);//打印value
+        });
+    </script>  
+</body>
+</html>

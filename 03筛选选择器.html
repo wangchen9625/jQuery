@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+        </ul>
+        <ol>
+            <li>2</li>
+            <li>2</li>
+            <li>2</li>
+            <li>2</li>
+            <li>2</li>
+        </ol>
+    </div>
+    <script>
+        //选第一个ul 中的li
+        $('ul li:first').css("color","red");
+        // last 最后一个
+        // 选取第index li ,则用eq(下标)
+        // 选取第3个li 下标为2
+        $('ul li:eq(2)').css("color",'blue');
+        // 奇数索引号 选取 odd , 偶数索引号 even
+        $('ol li:odd').css('color','pink');
+        $('ol li:even').css('color','yellow');
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .fast{
+            position: relative;
+            margin: 100px auto;
+            width: 200px;
+            height: 400px;
+            background-color: orange;
+        }
+        .fast .tips{
+            float: left;
+        }
+        .fast .tips{
+            float: left;
+        }
+        .fast .tips ul li{
+            margin: 2px auto;
+            background-color: gray;
+        }
+        .fast .tips ul li:hover{
+            cursor: pointer;
+        }
+        .fast .pic{
+            float: right;
+            border-radius: 5px;
+        }
+        .fast .pic img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="fast">
+        <div class="tips">
+            <ul>
+                <li>天猫</li>
+                <li>京东</li>
+                <li>1号</li>
+                <li>亚马孙</li>
+            </ul>
+        </div>
+        <div class = 'pic'><img src="images/pic1.jpg" alt=""></div>
+       
+    </div>
+    <script>
+        let lilist = $('.tips li');
+        lilist.eq(0).css('background','red');
+        $(function(){
+            lilist.mousemove(function(){
+                // 得到当前li 的索引号 $(this).index();
+                let index = $(this).index();
+                lilist.eq(index).css('background','red').siblings('li').css('background','');
+                // console.log();
+                $('.pic img').attr('src','images/pic'+ (index +1)+'.jpg')
+                // consolo.dir($('.pic img'));
+                // console.log($('.pic img'));
+                // $('.pic img').css('src','images/pic'+ index+1+'.jpg');
+            });
+        })
+    </script>
+</body>
+</html>

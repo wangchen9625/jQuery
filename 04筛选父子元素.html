@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+</head>
+
+<body>
+    <div class="ms">
+        <ul>
+            <li>123</li>
+            <li class="litest">123</li>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+        <ol>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+    </div>
+    <div class="yeye">
+        <div class="father">
+            <div class="son">
+                fff
+            </div>
+        </div>
+    </div>
+    <h1>
+        <div class="haveclass"></div>
+        <div></div>
+    </h1>
+    <script>
+        //父子元素兄弟元素选择器
+        // 1.parent() 查询父级
+        console.log($('.son').parent());//获得father
+        // childre(selector)  最近一级(亲儿子) 相当于 $('ul> li')
+        console.log($('.yeye').children());//获得father
+        // find(selector)  后代选择器 相当于 $('ul li')
+        console.log($('.ms ul').find('li'));
+        // siblings(selector)  查找兄弟节点,不包括自己  用于排他
+        $('.litest').siblings('li').css('color','purple');
+        // nextAll(selector)  查找当前元素之后所有的同辈元素
+        $('.litest').nextAll('li').css('color','orange');
+        // prevAll(selector)  查找当前元素之前所有的同辈元素
+        // $('div ol').children()[2].prevAll('li').css('color','pink');
+        $('div ol').children().eq(2).prevAll('li').css('color','pink');
+        // hasClass(class) 检查当前元素是否含有特定的类 有的话返回true  没有的话返回 false
+        console.log($('h1').children().eq(0).hasClass('haveclass'));
+        console.log($('h1').children().eq(1).hasClass('haveclass'));
+
+        //eq(index)         //下标索引 $("li:eq(2)")
+        // 如上例子 eq(index)已经使用 并推荐使用
+
+    </script>
+</body>
+
+</html>

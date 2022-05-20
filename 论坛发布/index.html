@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .dis {
+            margin: 50px 300px;
+            border: 1px solid black;
+            width: 500px;
+        }
+        .dis ul li{
+            width: 80%;
+            
+            float: left;
+            height: 20px;
+        }
+        .dis ul li span {
+            padding-left: 20px;
+            width: 60%;
+            float: left;
+        }
+
+        .dis ul li a {
+            padding-right: 20px;
+            float: right;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            clear: both;
+            display: block;
+            content: ".";
+            height: 0;
+        }
+
+        .clearfix {
+            *zoom: 1
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dis clearfix">
+        <h3>论坛发布</h3>
+        <textarea name="" id="txt" cols="50" rows="10"></textarea>
+        <button>发布</button>
+        <div class="floor">
+            <ul>
+                <li>
+                    <span class="msg">haibucuo</span>
+                    <a href="javascript:;">删除</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <script>
+        $('button').click(function () {
+            if ($('#txt').val() == "") {
+                alert("评论不能为空");
+            } else {
+                let li = $('<li><span class="msg">' + $('#txt').val() + '</span><a href="javascript:;">删除</a></li>')
+                $('ul').prepend(li);
+                $('ul li').eq(0).css("display","none");
+                $('ul li').eq(0).slideDown(300);
+                $('#txt').val("");
+            }
+        })
+        $('.floor ul').on('click','a',function(){
+            $(this).parent('li').slideUp(function(){
+                $(this).remove();
+            })
+        })
+    </script>
+</body>
+
+</html>

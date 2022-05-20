@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        .son{
+            height: 280px;
+            width: 40px;
+            background-color: blue;
+            position: absolute;
+            left: 10px;
+            top: 15px;
+        }
+        .current{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        //1单个事件 element.事件(function(){})
+        // $('.father').click(function(){
+        //     $(this).css('background','purple');
+        // })
+        // $('.father').mouseenter(function(){
+        //     $(this).css('background','orange');
+        // })
+        // 2 事件处理on 以绑定多个事件,用类对象的格式
+        $('.father').on({
+            mouseenter :function(){
+                $(this).css('background','orange');
+            },
+            click:function(){
+                $(this).css('background','purple');
+            }
+        })
+        // 3如果值绑定一个函数,则绑定的所有时间都对应这个类
+        $('.son').on("mouseenter mouseleave",function(){
+            $(this).toggleClass('current');
+        })
+        
+        
+    </script>
+</body>
+</html>

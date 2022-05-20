@@ -1,0 +1,118 @@
+
+.w{
+    width: 1280px;
+    margin: 0 auto;
+}
+.top{
+    background-color: pink;
+    height: 60px;
+    padding-top: 10px;
+    padding-left: 30px;
+}
+.red{
+    color:red;
+}
+.oneline{
+    width: 100%;
+    border-bottom: 1px solid black;
+}
+.info{
+    background-color: aliceblue;
+    /* border: 1px solid black; */
+}
+.info ul li{
+    /* background-color: blue; */
+    width: 1280px;
+    height: 50px;
+    float: left;
+    border-bottom: 1px solid #000;
+    height: 100px;
+    padding-top: 20px;
+}
+.info ul li > *{
+    float: left;
+}
+.itemcheckbox{
+    margin-left: 20px;
+}
+.info ul li img{
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+.info ul li p{
+    width: 150px;
+    margin-left: 30px;
+    font-size: 12px;
+}
+.info ul li .price{
+    margin-left: 250px;
+}
+.info ul li .pcsop{
+    margin-left: 100px;
+}
+.info ul li .pcsop > *{
+    float: left;
+    background-color: gainsboro;
+}
+.info ul li .pcsop > button{
+    width: 20px;
+    border: 1px solid gray;
+}
+.info ul li .pcsop > input{
+    width: 60px;
+    outline: none;
+    text-align: right;
+    border-top: 1px solid gray;
+    border-bottom: 1px solid gray;
+    /* border: 1px solid gray; */
+}
+.info ul li .pay{
+    font-weight: 700;
+    margin-left: 50px;
+}
+.info ul li .delitem{
+    font-weight: 700;
+    margin-left: 250px;
+}
+.bottom{
+    background-color:yellow;
+    height: 60px;
+}
+.bottom .left{
+    float: left;
+    padding-top: 20px;
+    font-size: 14px;
+    margin-left: 20px;
+    
+}
+.bottom .left > *{
+    padding-left: 10px;
+}
+.bottom .right{
+    float: right;
+    height: 60px;
+}
+.bottom .right > span{
+    text-align: center;
+    line-height: 60px;
+    padding-top: 30px;
+    padding-right: 50px;
+    
+}
+.bottom .right > span > i{
+    font-size: 18px;
+    
+}
+.bottom .right > button{
+    height: 100%;
+    width: 100px;
+    background-color: rgb(202, 28, 127);
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.item_pick_bgc{
+    background-color: skyblue;
+}

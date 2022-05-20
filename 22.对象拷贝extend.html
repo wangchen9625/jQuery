@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .test {
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test">对象拷贝</div>
+    <script>
+        $(function(){
+            let tobj = {
+                id:0,
+                msg:{
+                    sex:0
+                }
+            };
+            let obj = {
+                id:1,
+                name:"andy",
+                msg:{
+                    age:18
+                }
+            }
+            $.extend(tobj,obj);//浅拷贝 只拷贝地址,修改复杂类型数据值会互相影响,如上msg
+            // 浅拷贝 msg 也会直接覆盖原来的msg 导致 msg.sex 属性消失
+            console.log(tobj);//属性重复 会覆盖原来的
+            tobj.msg.age = 12;
+            console.log(obj.msg.age);
+            let deepobj = {
+                id:3,
+                msg:{
+                    sex:1
+                }
+            };
+            $.extend(true,deepobj,obj);//深拷贝, 真正拷贝数据,互不影响
+            //msg 不会覆盖,会把属性并在一起
+            console.log(deepobj);
+        })
+    </script>
+</body>
+</html>

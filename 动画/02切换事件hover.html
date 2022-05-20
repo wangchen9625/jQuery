@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .box {
+            position: absolute;
+            height: 400px;
+            width: 250px;
+            background-color: pink;
+        }
+
+        .nav {
+            width: 200px;
+            height: 100px;
+            margin: 200px auto;
+        }
+
+        .nav ul>li {
+            float: left;
+            background-color: orange;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .nav ol {
+            display: none;
+        }
+
+        .nav ol>li {
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div class="box"></div>
+    <div class="nav">
+        <ul>
+            <li>i
+                <ol>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ol>
+            </li>
+            <li>j
+                <ol>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                </ol>
+            </li>
+            <li>k
+                <ol>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                </ol>
+            </li>
+        </ul>
+    </div>
+    <script>
+
+        // 下来菜单
+        $(function () {
+            //按钮操作
+            let alist = $('button');
+            console.log(alist);
+            alist.eq(0).click(function () {
+                $('.box').slideDown(200);
+            })
+            alist.eq(1).click(function () {
+                $('.box').slideUp(200);
+            })
+            alist.eq(2).click(function(){
+                $('.box').slideToggle(200);
+            })
+            //下来菜单操作
+            let blist = $('.nav ul>li');
+            // console.log(blist);
+            // blist.mouseenter(function () {//淡进
+            //     console.log('11');
+            //     $(this).children('ol').slideDown(200);
+            // });
+            // blist.mouseout(function () {//淡出
+            //     console.log('2');
+            //     $(this).children('ol').slideUp(200);
+            // })
+            //hover 事件切换,如果两个事件,那么第一个是鼠标经过处理,第二个鼠标离开处理,
+            // 如果只有一个事件,那么鼠标经过和离开 那么都处理
+            blist.hover(function(){
+                $(this).children('ol').slideToggle(200);
+            })
+        })
+
+    </script>
+</body>
+
+</html>

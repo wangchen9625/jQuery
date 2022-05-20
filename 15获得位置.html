@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .father{
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        .son{
+            height: 280px;
+            width: 40px;
+            background-color: blue;
+            position: absolute;
+            left: 10px;
+            top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <script>
+        //1 offset()获取 与文档的位置 和父元素没有关系 
+        // 返回对象
+        let obj = $('.son').offset();
+        console.log(obj.left);
+        console.log(obj.top);
+        //修改 相对文档的位置
+
+        // $('.son').offset({
+        //     top:30,
+        //     left:300
+        // });
+        //2 position()获取距离带有定位的父级位置(偏移),如果没有定位父级,则以文档为主
+        // 同样返回对象
+        // 只能获取不能设置
+        console.log($('.son').position().left);
+        
+        
+        
+    </script>
+</body>
+</html>

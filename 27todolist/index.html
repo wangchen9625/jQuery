@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background-color: rgb(190, 185, 185);
+        }
+        .w {
+            width: 800px;
+            margin: 0 auto;
+        }
+        li{
+            list-style: none;
+        }
+        .hdbgc{
+            background-color:rgb(37, 32, 32);
+        }
+        header{
+            height: 70px;
+            
+        }
+        /* .todo{
+            background-color: orange;
+        }
+        .cplt{
+            background-color: purple;
+        } */
+        .clearfix:after{
+            visibility: hidden;
+            clear:both;
+            display: block;
+            content: ".";
+            height: 0;
+        }
+        .clearfix{
+            *zoom: 1
+        }
+        header h1{
+            float: left;
+            color: white;
+            line-height: 80px;
+            padding-left: 10px;
+            font-weight: 400;
+        }
+        header input{
+            border-radius: 5px;
+            float: right;
+            /* color: white; */
+            line-height: 200%;
+            /* padding-right: 10px; */
+            width: 400px;
+            outline: none;
+            margin-top: 24px;
+            margin-right: 30px;
+            font-size: 20px;
+        }
+        .todo{
+            margin-top: 10px;
+        }
+        .title{
+            height: 60px;
+        }
+        .todo h1,
+        .cplt h1
+        {
+            float: left;
+            padding-left: 10px;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        .tocount{
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-radius: 50px;
+            background-color: gainsboro;
+            float: right;
+            margin-right: 15px;
+            margin-top: 15px;
+
+        }
+        li{
+            height: 50px;
+            /* width: 100%; */
+            /* border: 1px solid black; */
+            border-radius: 3px;
+            background-color: rgb(220, 218, 218);
+            margin: 10px 5px ;
+            line-height: 50px;
+        }
+        input[type=checkbox],
+        button{
+            height: 25px;
+            width: 25px;
+            vertical-align: middle;
+            background-color: gainsboro;
+            /* margin-top: 10px;*/
+            margin-left: 10px; 
+            /* text-align: center; */
+        }
+        button{
+            border: 1px solid gray;
+            cursor: pointer;
+        }
+        span{
+            display: inline-block;
+            width: 88%;
+            font-size: 18px;
+            padding-left: 3px;
+        }
+        .coperight{
+            text-align: center;
+            color: gray;
+        }
+    </style>
+</head>
+<body>
+    <div class="hdbgc">
+        <header class="w">
+            <h1>ToDoList</h1>
+            <input type="text" name="" id="inputinfo" placeholder="添加ToDo">
+        </header>
+    </div>
+    
+    <div class="todo w">
+        <div class="title">
+            <h1>正在进行</h1>
+            <div class="tocount"></div>
+        </div>
+        <div class="info">
+            <ul class="clearfix">
+                <!-- <li>
+                    <input type="checkbox" name="" id="">
+                    <span>今天要吃8个馒头</span>
+                    <button>-</button>
+                </li>
+                <li><input type="checkbox" name="" id=""><span>今天要吃8个馒头</span><button>-</button></li>
+                <li>
+                    <input type="checkbox" name="" id="">
+                    <span>今天要吃8个馒头</span>
+                    <button>-</button>
+                </li> -->
+                
+            </ul>
+        </div>
+        
+    </div>
+    <div class="cplt w clearfix">
+        <div class="title">
+            <h1>已经完成</h1>
+            <div class="tocount"></div>
+        </div>
+        <div class="info">
+            <ol class="clearfix">
+                
+            </ol>
+        </div>
+    </div>
+    <script>
+        // 数据格式
+        function Init(){
+            let cnt = localStorage.getItem("cnt");
+            console.log(cnt);
+            if( cnt === null ){
+                localStorage.setItem("cnt",0);
+                return 0;
+            }
+            else return cnt;
+        }
+        let cnt = Init();
+        console.log(cnt);
+        let item222 = [
+            {title:"笔记",
+            index:1}
+        ];
+        let item221 = [
+            {title:"背诵",
+            index:2}
+        ];
+        function setData(itemlist,type){
+            if(type)    localStorage.setItem("comp",JSON.stringify(itemsComp));
+            else localStorage.setItem("undo",JSON.stringify(itemsUndo))
+        }
+        
+        function getData(type){
+            let iteml;
+            if(type)    iteml=localStorage.getItem("comp");
+            else iteml = localStorage.getItem("undo");
+            if(iteml === null) return [];
+            else return  JSON.parse(iteml);
+        }
+        itemsUndo = getData(0);
+        itemsComp = getData(1);
+        console.log(itemsComp);
+        function clearLi(type){
+            if(type == 0){
+                $('ul li').remove();
+            }else if(type == 1){
+                $('ol li').remove();
+            }else if(type == 2){
+                clearLi(0);
+                clearLi(1);
+            }
+        }
+        function show(type){
+            if(type == 0){
+                $('.todo .tocount').text(itemsUndo.length);
+                for (const it of itemsUndo) {
+                    let li = '<li><input type="checkbox" name="" id="'+it.index+'"><span>'+it.title+'</span><button>-</button></li>'
+                    $('ul').append(li);
+                }
+            }else if(type == 1){
+                $('.cplt .tocount').text(itemsComp.length);
+                for (const it of itemsComp) {
+                    let li = '<li><input type="checkbox" name="" id="'+it.index+'" checked><span>'+it.title+'</span><button>-</button></li>'
+                    $('ol').append(li);
+                }
+            }else if(type == 2){
+                show(0);
+                show(1);
+            }
+        }
+        function clearLi(type){
+            if(type == 0){
+                $('ul li').remove();
+            }else if(type == 1){
+                $('ol li').remove();
+            }else if(type == 2){
+                clearLi(0);
+                clearLi(1);
+            }
+        }
+        show(2);
+        function add(item){
+            itemsUndo.unshift(item);
+            console.log(itemsUndo);
+            setData(itemsUndo,0);
+            clearLi(0);
+            show(0);
+        }
+        $('#inputinfo').on('keydown',function(e){
+            if(e.keyCode === 13){
+                // alert('11');
+                
+                let t = {title:$(this).val(),index:cnt};
+                add(t);
+                cnt++;
+                localStorage.setItem("cnt",cnt);
+                $(this).val("");
+            }
+        })
+        $('ul').on('click','button',function(e){
+            let ipt = $(this).siblings('input');
+            let index = ipt.attr('id');
+            delItem(itemsUndo,index,0);
+        })
+        function delItem(items,index,type){
+            console.log(index);
+            for (let i = 0; i < items.length; i++) {
+                const item = items[i];
+                if(item.index == index){
+                    items.splice(i,1);
+                    break;
+                }
+            }
+            setData(items,type);
+            clearLi(type);
+            show(type);
+        }
+        $('ol').on('click','button',function(e){
+            let ipt = $(this).siblings('input');
+            let index = ipt.attr('id');
+            delItem(itemsComp,index,1);
+        })
+        $('ul').on('click','input',function(){
+            let index = $(this).attr('id');
+            checkItem(index,0);
+        })
+        $('ol').on('click','input',function(){
+            let index = $(this).attr('id');
+            checkItem(index,1);
+        })
+        function checkItem(index,type){
+            let items1,items2;
+            if(type == 0){
+                items1 = itemsUndo;
+                items2 = itemsComp;
+            }else if(type == 1){
+                items1 = itemsComp;
+                items2 = itemsUndo;
+            }
+            for (let i = 0; i < items1.length; i++) {
+                let item = items1[i];
+                
+                if(item.index == index){
+                    items1.splice(i,1);
+                    items2.push(item);
+                    break;
+                }
+            }
+            setData(itemsUndo,0);
+            setData(itemsComp,1);
+            clearLi(2);
+            show(2);
+        }
+        
+        
+    </script>
+    <div class="coperight w" >coperight@ 1.2.3</div>
+</body>
+</html>

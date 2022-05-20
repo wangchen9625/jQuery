@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <ol>
+
+        </ol>
+        
+    </div>
+    <script>
+        //事件委托
+        $('ul').on('click','li',function(){
+            //this 指向的li
+            console.log($(this).text());
+        })
+        //on可以给动态创建的的元素绑定事件 普通的事件不可以
+        $('ol li').click(function(){//点击了没反应
+            alert("普通的绑定事件");
+        });
+        let li = $("<li>我是后来创建的</li>");
+        $('ol').append(li);
+        $('ol').on('click','li',function(){
+            alert("on绑定事件");
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .test {
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test">多库共存</div>
+    <span>释放控制权,让自己决定 noConflict()</span>
+    <script>
+        $(function(){
+            //如果 $符号在其他库中被使用 ,
+            //1.jQuery 我们可以用jQuery
+            jQuery.each();
+            //2.让jQuery 释放$ 控制权,让自己决定
+            let suibian = jQuery.noConflict();
+            suibian.each();
+            console.log(suibian('span').text());
+        })
+    </script>
+</body>
+</html>

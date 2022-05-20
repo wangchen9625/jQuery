@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jQuery.js"></script>
+    <style>
+        div{
+            height: 200px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+            <li>123</li>
+        </ul>
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        // 隐式迭代
+        // 把匹配的所有元素进行遍历循环,给每一个元素添加css 方法
+        $('div').css("backgroundColor","pink");
+        $('li').css("color",'orange');
+    </script>
+</body>
+</html>

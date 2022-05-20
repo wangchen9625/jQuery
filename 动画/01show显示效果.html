@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery.js"></script>
+    <style>
+        div{
+            height: 400px;
+            width: 250px;
+            background-color: pink;
+        }
+    </style>
+</head>
+<body>
+    <button>显示</button>
+    <button>隐藏</button>
+    <button>切换</button>
+    <div></div>
+    <script>
+        // show([speed],[easing],[fn])
+        // 三个参数都可以省略
+        $(function(){
+            let blist = $('button');
+            blist.eq(0).click(function(){
+                $('div').show(1000,function(){//显示
+                    //回调函数
+                });
+            })
+            blist.eq(1).click(function(){
+                $('div').hide(1000);//隐藏
+                //如果没有回调函数可以不写
+            })
+            blist.eq(2).click(function(){
+                $('div').toggle(1000,function(){//显示隐藏状态切换
+
+                });
+            })
+        })
+        
+    </script>
+</body>
+</html>

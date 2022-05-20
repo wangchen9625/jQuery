@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../jQuery.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .w{
+            width: 1280px;
+            margin: 0 auto;
+            border: 1px solid hotpink;
+        }
+        .spc{
+            height: 500px;
+        }
+        .banner{
+            background-color: orange;
+            height: 200px;
+        }
+        .banner:hover{
+            cursor: pointer;
+        }
+        .jinri{
+            background-color:burlywood;
+            height: 300px;
+        }
+        aside{
+            position: fixed;
+            top: 300px;
+            right: 5px;
+            display: none;
+        }
+        aside ul li{
+            height: 30px;
+            background-color: bisque;
+            border: 1px solid black;
+        }
+        aside ul li:hover{
+            cursor: pointer;
+        }
+        .current{
+            background-color: brown;
+        }
+        .dibu{
+            height: 800px;
+            background-color: blueviolet;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner w"></div>
+    <div class="jinri w"></div>
+    <div class="dianqi w spc" style="background-color:yellow"></div>
+    <div class="jiadian w spc" style="background-color:pink"></div>
+    <div class="chongwu w spc" style="background-color:rgb(207, 192, 255)"></div>
+    <div class="yiyao w spc" style="background-color:rgb(5, 182, 100)"></div>
+    <aside>
+        <ul>
+            <li>电器</li>
+            <li>家电</li>
+            <li>宠物</li>
+            <li>医药</li>
+        </ul>
+    </aside>
+    <div class="dibu w"></div>
+    <script>
+        let flag = true;
+        $(window).scroll(function(){
+            if(flag){
+                if($(document).scrollTop() >= $('.jinri').offset().top){
+                    $('aside').slideDown(500);
+                }else{
+                    $('aside').slideUp(500);
+                }
+                let index = 0;
+                $('.spc').each(function(i,domele){
+                    if($(document).scrollTop() >= $(domele).offset().top){
+                        index = i;
+                    }
+                });
+                let ll = $('aside ul li');
+                ll.eq(index).addClass('current').siblings().removeClass('current');
+            }
+    
+
+        })
+        $('aside ul').on('click','li',function(ele){
+            flag = false;
+            console.log($(this).index());
+            let index = $(this).index();
+            let h = $('.spc').eq(index).offset().top;
+            // console.log(h);
+            $('body,html').stop().animate({
+                scrollTop:h
+            },function(){
+                flag = true;//节流阀
+            });
+            $(this).addClass('current').siblings().removeClass('current');
+        })
+    </script>
+</body>
+</html>

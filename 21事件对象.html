@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script src="jQuery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .test {
+            height: 300px;
+            width: 250px;
+            background-color: orange;
+            margin: 50px 100px;
+            position: relative;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="test">事件对象 我已经阻止了冒泡</div>
+    <script>
+        $(function(){
+            $(document).on('click',function(e){
+                alert("没有阻值冒泡 所以看到我了");
+            })
+            $('div').on('click',function(e){
+                console.log(e);
+                e.stopImmediatePropagation();//阻值冒泡
+                // 也可以用 return false;
+            })
+
+        })
+    </script>
+</body>
+</html>
